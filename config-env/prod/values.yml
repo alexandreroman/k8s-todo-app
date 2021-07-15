@@ -1,0 +1,7 @@
+#@data/values
+---
+NAMESPACE: todo
+DOMAIN: k8s-todo.withtanzu.com
+IMAGES:
+  frontend: sha256:700cd50d49808a4570ad68e68cde8d710b857453e2e88ca323a0155ebbe05a4b
+  backend: sha256:196717d23f332d2c6a1e8161aed3c2066ed7cefbab4009d4795ff908baa71db1

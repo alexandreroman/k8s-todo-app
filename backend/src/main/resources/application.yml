@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: k8s-todo-backend
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus

@@ -1,0 +1,21 @@
+#@data/values
+---
+#! Set application name.
+APP: k8s-todo
+
+#! Set target namespace.
+NAMESPACE: todo
+
+#! Set image repository where to find container images.
+IMAGE_REPOSITORY: index.docker.io/alexandreroman
+
+#! Set the public-facing domain used for accessing the application.
+DOMAIN: k8s-todo.example.com
+
+#! Set database name.
+DATABASE_NAME: pgdb
+
+#! Set tag for container images.
+IMAGES:
+  frontend: latest
+  backend: latest

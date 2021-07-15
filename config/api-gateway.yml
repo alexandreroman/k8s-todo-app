@@ -1,0 +1,36 @@
+#@ load("@ytt:data", "data")
+---
+apiVersion: tanzu.vmware.com/v1
+kind: SpringCloudGateway
+metadata:
+  name: gateway
+  namespace: #@ data.values.NAMESPACE
+---
+apiVersion: tanzu.vmware.com/v1
+kind: SpringCloudGatewayRouteConfig
+metadata:
+  name: gateway-routes
+  namespace: #@ data.values.NAMESPACE
+spec:
+  routes:
+  - uri: http://backend
+    predicates:
+    - Path=/api/**
+    filters:
+    - StripPrefix=0
+  - uri: http://frontend
+    predicates:
+    - Path=/**
+    filters:
+    - StripPrefix=0
+---
+apiVersion: tanzu.vmware.com/v1
+kind: SpringCloudGatewayMapping
+metadata:
+  name: gateway-mapping
+  namespace: #@ data.values.NAMESPACE
+spec:
+  gatewayRef:
+    name: gateway
+  routeConfigRef:
+    name: gateway-routes

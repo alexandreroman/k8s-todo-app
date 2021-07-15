@@ -1,0 +1,9 @@
+#@ load("@ytt:data", "data")
+---
+apiVersion: sql.tanzu.vmware.com/v1
+kind: Postgres
+metadata:
+  name: #@ data.values.DATABASE_NAME
+  namespace: #@ data.values.NAMESPACE
+spec:
+  serviceType: ClusterIP
