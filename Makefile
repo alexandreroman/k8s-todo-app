@@ -38,7 +38,6 @@ backend/target/k8s-todo-backend.jar:
 
 run-frontend: build-frontend
 	cd frontend && python3 -m http.server
-	docker run --rm -p 9000:9000 -e PORT=9000 ${IMAGE_REPOSITORY}/k8s-todo-frontend
 
 run-backend: build-backend
 	java -jar backend/target/k8s-todo-backend.jar
