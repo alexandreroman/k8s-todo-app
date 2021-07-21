@@ -3,6 +3,3 @@ exclude = [
   "package*.json",
   "node_modules",
 ]
-
-[[build.buildpacks]]
-id = "paketo-buildpacks/nginx"

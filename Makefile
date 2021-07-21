@@ -12,7 +12,7 @@ clean:
 package: package-frontend package-backend
 
 package-frontend: build-frontend
-	pack build -p frontend ${IMAGE_REPOSITORY}/k8s-todo-frontend
+	pack build -B "paketobuildpacks/builder:base" -b gcr.io/paketo-buildpacks/nginx -p frontend ${IMAGE_REPOSITORY}/k8s-todo-frontend
 
 package-backend: build-backend
 	cd backend && ./mvnw -DskipTests spring-boot:build-image -Dspring-boot.build-image.imageName=${IMAGE_REPOSITORY}/k8s-todo-backend
