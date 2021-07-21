@@ -15,7 +15,11 @@ DOMAIN: k8s-todo.example.com
 #! Set database name.
 DATABASE_NAME: pgdb
 
+#! Set to true to use a native-image for the backend component.
+USE_NATIVE_BACKEND: false
+
 #! Set tag for container images.
 IMAGES:
   frontend: latest
   backend: latest
+  backend-native: latest

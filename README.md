@@ -59,6 +59,8 @@ Deploy this app with this command:
 ytt -f config -f config-env/my-env | kubectl apply -f -
 ```
 
+### Enabling external access
+
 The app is not available for external access by default.
 Depending on your environment, you may want to enable load balancer
 or ingress support, using configuration overlay extensions in `config-ext`.
@@ -79,7 +81,30 @@ In case you have [cert-manager](https://cert-manager.io/) running in your cluste
 
 ```shell
 ytt -f config -f config-env/my-env -f config-ext/ingress.yml -f config-ext/ingress-tls.yml | kubectl apply -f -
+```
 
+### Enabling `native-image`
+
+This app supports `native-image` with GraalVM for the backend component, powered by
+[Spring Native](https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/).
+
+A Spring Boot app built with GraalVM `native-image` consumes less memory at runtime,
+and starts faster than using a JVM based app.
+
+Deploy the app with `native-image` enabled with this command:
+
+```shell
+ytt -f config -f config-env/my-env -v USE_NATIVE_BACKEND=true | kubectl apply -f -
+```
+
+You may also want to set the property `USE_NATIVE_BACKEND` in your own configuration file:
+
+```yaml
+#@data/values
+---
+NAMESPACE: my-todo
+DOMAIN: k8s-todo.domain.corp
+USE_NATIVE_BACKEND: true
 ```
 
 ## Building the app

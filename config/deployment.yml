@@ -54,12 +54,12 @@ spec:
     spec:
       containers:
       - name: backend
-        image: #@ image_for_component("backend")
+        image: #@ image_for_component("backend-native" if data.values.USE_NATIVE_BACKEND else "backend")
         resources:
           requests:
-            memory: 1G
+            memory: #@ "256M" if data.values.USE_NATIVE_BACKEND else "1G"
           limits:
-            memory: 1G
+            memory: #@ "256M" if data.values.USE_NATIVE_BACKEND else "1G"
         ports:
         - name: http
           containerPort: 8080
