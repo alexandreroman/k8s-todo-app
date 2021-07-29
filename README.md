@@ -107,6 +107,26 @@ DOMAIN: k8s-todo.domain.corp
 USE_NATIVE_BACKEND: true
 ```
 
+### Using kapp to deploy the app
+
+[kapp is part of the Carvel toolsuite](https://carvel.dev/kapp), along with `ytt`.
+It's a great tool for managing resources (pod, deployment, service, etc.)
+for your Kubernetes app: all those elements are regrouped under a single
+"application", with resource ordering.
+
+You can combine `ytt` with `kapp` to deploy this app.
+For example:
+
+```shell
+kapp deploy -a todo-dev -c -f <(ytt -f config -f config-env/dev -f config-ext/ingress.yml -f config-ext/ingress-tls.yml)
+```
+
+`kapp` displays the resources that you're about to deploy (with diff support),
+and also monitors deployment, unlike `kubectl`: the command will wait on
+the resources to become available before terminating.
+
+A great companion to `ytt`!
+
 ## Building the app
 
 Use targets defined in [Makefile](Makefile) to build the app on your workstation.
