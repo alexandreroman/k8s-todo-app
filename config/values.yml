@@ -12,6 +12,9 @@ IMAGE_REPOSITORY: index.docker.io/alexandreroman
 #! Set the public-facing domain used for accessing the application.
 DOMAIN: k8s-todo.example.com
 
+#! Set cert-manager cluster issuer to use when ingress TLS is enabled.
+CERT_MANAGER_CLUSTER_ISSUER: letsencrypt-prod
+
 #! Set database name.
 DATABASE_NAME: pgdb
 

@@ -8,7 +8,7 @@ metadata:
   annotations:
     kubernetes.io/tls-acme: "true"
     ingress.kubernetes.io/force-ssl-redirect: "true"
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: #@ data.values.CERT_MANAGER_CLUSTER_ISSUER
 spec:
   #@overlay/match missing_ok=True
   tls:
